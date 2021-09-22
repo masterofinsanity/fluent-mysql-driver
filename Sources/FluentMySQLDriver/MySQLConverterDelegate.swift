@@ -8,6 +8,14 @@ struct MySQLConverterDelegate: SQLConverterDelegate {
 
     func customDataType(_ dataType: DatabaseSchema.DataType) -> SQLExpression? {
         switch dataType {
+        case .int8: return SQLRaw("TINYINT")
+        case .int16: return SQLRaw("SMALLINT")
+        case .int32: return SQLRaw("INTEGER")
+        case .int64: return SQLRaw("BIGINT")
+        case .uint8: return SQLRaw("TINYINT UNSIGNED")
+        case .uint16: return SQLRaw("SMALLINT UNSIGNED")
+        case .uint32: return SQLRaw("INTEGER UNSIGNED")
+        case .uint64: return SQLRaw("BIGINT UNSIGNED")
         case .string: return SQLRaw("VARCHAR(255)")
         case .datetime: return SQLRaw("DATETIME(6)")
         case .uuid: return SQLRaw("VARBINARY(16)")
